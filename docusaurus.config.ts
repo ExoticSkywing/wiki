@@ -5,8 +5,8 @@ import { themes } from 'prism-react-renderer'
 import { Social } from './src/components/SocialLinks'
 import { GiscusConfig } from './src/components/Comment'
 
-const beian = '闽ICP备2020017848号-2'
-const beian1 = '闽公网安备35021102000847号'
+const beian = 'Nebuluxe·'
+const beian1 = '银河wiki'
 
 const config: Config = {
   title: '愧怍的小站',
