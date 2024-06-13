@@ -1,15 +1,14 @@
-import path from 'node:path'
-import type { Config } from '@docusaurus/types'
 import type * as Preset from '@docusaurus/preset-classic'
+import type { Config } from '@docusaurus/types'
 import { themes } from 'prism-react-renderer'
-import { Social } from './src/components/SocialLinks'
-import { GiscusConfig } from './src/components/Comment'
+import social from './data/social'
+import type { GiscusConfig } from './src/components/Comment'
 
 const beian = 'Nebuluxe·'
 const beian1 = '银河wiki'
 
 const config: Config = {
-  title: '愧怍的小站',
+  title: '愧怍',
   url: 'https://kuizuo.cn',
   baseUrl: '/',
   favicon: 'img/favicon.ico',
@@ -25,10 +24,11 @@ const config: Config = {
     //   id: 'announcementBar-3',
     //   content: ``,
     // },
+    image: 'img/og.png',
     metadata: [
       {
-        name: 'keywords',
-        content: '愧怍, kuizuo',
+        name: 'author',
+        content: '愧怍',
       },
       {
         name: 'keywords',
@@ -36,7 +36,7 @@ const config: Config = {
       },
       {
         name: 'keywords',
-        content: '编程爱好者, Web开发者, 写过爬虫, 学过逆向, 现在主攻ts全栈',
+        content: '编程爱好者, Web开发者, 写过爬虫, 学过逆向, 主攻ts全栈',
       },
     ],
     docs: {
@@ -44,7 +44,6 @@ const config: Config = {
         hideable: true,
       },
     },
-
     navbar: {
       logo: {
         alt: '愧怍',
@@ -69,7 +68,7 @@ const config: Config = {
           items: [
             { label: '归档', to: 'blog/archive' },
             { label: '笔记', to: 'docs/skill' },
-            { label: '资源', to: 'resource' },
+            { label: '资源', to: 'resources' },
             { label: '友链', to: 'friends' },
             { label: '工具推荐', to: 'docs/tools' },
           ],
@@ -97,20 +96,27 @@ const config: Config = {
           title: '社交媒体',
           items: [
             { label: '关于我', to: '/about' },
-            { label: 'GitHub', href: 'https://github.com/kuizuo' },
-            { label: 'Twitter', href: 'https://twitter.com/kuizuo' },
-            {
-              label: '掘金',
-              href: 'https://juejin.cn/user/1565318510545901',
-            },
-            { label: 'Discord', href: 'https://discord.gg/M8cVcjDxkz' },
+            { label: 'GitHub', href: social.github.href },
+            { label: 'Twitter', href: social.x.href },
+            { label: '掘金', href: social.juejin.href },
+            { label: 'Discord', href: social.discord.href },
+          ],
+        },
+        {
+          title: '网站',
+          items: [
+            { label: 'js反混淆', to: 'https://js-deobfuscator.kuizuo.cn' },
+            { label: 'cyberChef', to: 'https://gchq.github.io/CyberChef' },
+            { label: 'api服务', to: 'https://api.kuizuo.cn' },
+            { label: '便民服务', to: 'https://service.kuizuo.cn' },
+            { label: '站点监控', to: 'https://uptime.kuizuo.cn' },
           ],
         },
         {
           title: '更多',
           items: [
             { label: '友链', position: 'right', to: 'friends' },
-            { label: '导航', position: 'right', to: 'resource' },
+            { label: '导航', position: 'right', to: 'resources' },
             {
               html: `
                 <a href="https://docusaurus.io/zh-CN/" target="_blank" rel="noreferrer noopener">
@@ -123,9 +129,9 @@ const config: Config = {
       ],
       copyright: `
         <p style="margin-bottom: 0;"><a href="http://beian.miit.gov.cn/">${beian}</a></p>
-        <p style="display: inline-flex; align-items: center;"><img style="height:20px;margin-right: 0.5rem;" src="/img/police.png" alt="police" height="20"/><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=${beian1.match(
-          /\d+/,
-        )?.[0]}" >${beian1}</a></p>
+        <p style="display: inline-flex; align-items: center;"><img style="height:20px;margin-right: 0.5rem;" src="/img/police.png" alt="police" height="20"/><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=${
+          beian1.match(/\d+/)?.[0]
+        }" >${beian1}</a></p>
         <p>Copyright © 2020 - PRESENT 愧怍 Built with Docusaurus.</p>
         `,
     },
@@ -192,7 +198,7 @@ const config: Config = {
         },
         blog: false,
         theme: {
-          customCss: ['./src/css/custom.scss'],
+          customCss: ['./src/css/custom.css'],
         },
         sitemap: {
           priority: 0.5,
@@ -201,17 +207,42 @@ const config: Config = {
           trackingID: 'G-S4SD5NXWXF',
           anonymizeIP: true,
         },
-        // debug: true,
+        debug: process.env.NODE_ENV === 'development',
       } satisfies Preset.Options,
     ],
   ],
   plugins: [
     'docusaurus-plugin-image-zoom',
-    'docusaurus-plugin-sass',
-    path.resolve(__dirname, './src/plugin/plugin-baidu-tongji'),
-    path.resolve(__dirname, './src/plugin/plugin-baidu-push'),
+    '@docusaurus/plugin-ideal-image',
     [
-      path.resolve(__dirname, './src/plugin/plugin-content-blog'), // 为了实现全局 blog 数据，必须改写 plugin-content-blog 插件
+      'docusaurus-plugin-baidu-tongji',
+      { token: 'c9a3849aa75f9c4a4e65f846cd1a5155' },
+    ],
+    [
+      '@docusaurus/plugin-pwa',
+      {
+        debug: process.env.NODE_ENV === 'development',
+        offlineModeActivationStrategies: [
+          'appInstalled',
+          'standalone',
+          'queryString',
+        ],
+        pwaHead: [
+          { tagName: 'link', rel: 'icon', href: '/img/logo.png' },
+          { tagName: 'link', rel: 'manifest', href: '/manifest.json' },
+          { tagName: 'meta', name: 'theme-color', content: '#12affa' },
+        ],
+      },
+    ],
+    [
+      'vercel-analytics',
+      {
+        debug: process.env.NODE_ENV === 'development',
+        mode: 'auto',
+      },
+    ],
+    [
+      './src/plugin/plugin-content-blog', // 为了实现全局 blog 数据，必须改写 plugin-content-blog 插件
       {
         path: 'blog',
         editUrl: ({ locale, blogDirPath, blogPath, permalink }) =>
@@ -231,19 +262,17 @@ const config: Config = {
         },
       },
     ],
-    ['@docusaurus/plugin-ideal-image', { disableInDev: false }],
-    [
-      '@docusaurus/plugin-pwa',
-      {
-        debug: true,
-        offlineModeActivationStrategies: ['appInstalled', 'standalone', 'queryString'],
-        pwaHead: [
-          { tagName: 'link', rel: 'icon', href: '/img/logo.png' },
-          { tagName: 'link', rel: 'manifest', href: '/manifest.json' },
-          { tagName: 'meta', name: 'theme-color', content: '#12affa' },
-        ],
-      },
-    ],
+    async function myPlugin(context, options) {
+      return {
+        name: 'docusaurus-tailwindcss',
+        configurePostCss(postcssOptions) {
+          // Appends TailwindCSS and AutoPrefixer.
+          postcssOptions.plugins.push(require('tailwindcss'))
+          postcssOptions.plugins.push(require('autoprefixer'))
+          return postcssOptions
+        },
+      }
+    },
   ],
   headTags: [
     {
@@ -267,6 +296,7 @@ const config: Config = {
       },
     },
   },
+  onBrokenLinks: 'warn',
 }
 
 export default config

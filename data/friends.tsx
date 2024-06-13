@@ -8,13 +8,13 @@ export const Friends: Friend[] = [
   {
     title: 'Mas0n',
     description: '梦想是咸鱼',
-    website: 'https://mas0n.cn/',
+    website: 'https://mas0n.cn',
     avatar: '/img/friend/mas0n.png',
   },
   {
     title: 'Jetzihan',
     description: 'A bug maker.',
-    website: 'https://jetlab.live/',
+    website: 'https://www.jet-lab.site/',
     avatar: '/img/friend/jetzihan.png',
   },
   {
@@ -26,14 +26,20 @@ export const Friends: Friend[] = [
   {
     title: 'Opacity',
     description: '助力每一个梦想',
-    website: 'https://www.opacity.ink/',
+    website: 'https://www.opacity.ink',
     avatar: '/img/friend/opacity.png',
   },
   {
     title: '静かな森',
     description: '致虚极，守静笃',
-    website: 'https://innei.in/',
+    website: 'https://innei.in',
     avatar: '/img/friend/innei.png',
+  },
+  {
+    title: 'Simon He',
+    description: 'Front-end development, Open source',
+    website: 'https://simonme.netlify.app',
+    avatar: '/img/friend/simonme.png',
   },
   {
     title: '前端老怪兽',
@@ -44,20 +50,14 @@ export const Friends: Friend[] = [
   {
     title: 'Meoo',
     description: '一杯茶，一根网线，一台电脑',
-    website: 'https://meoo.space',
+    website: 'https://cxorz.com',
     avatar: '/img/friend/meoo.png',
   },
   {
     title: '尚宇',
     description: '心怀理想，仰望星空，埋头苦干',
-    website: 'https://www.disnox.top/',
+    website: 'https://www.disnox.top',
     avatar: '/img/friend/disnox.png',
-  },
-  {
-    title: 'Faith&Passion',
-    description: '有些鱼是关不住的，因为他们属于天空',
-    website: 'https://jpy.wiki',
-    avatar: '/img/friend/faith&passion.png',
   },
   {
     title: 'CWorld Blog',
@@ -80,8 +80,14 @@ export const Friends: Friend[] = [
   {
     title: '鲸落',
     description: '心中无女人，代码自然神',
-    website: 'http://www.xiaojunnan.cn/',
+    website: 'http://www.xiaojunnan.cn',
     avatar: '/img/friend/xiaojunnan.png',
+  },
+  {
+    title: 'Licodeao',
+    description: 'The water flows incessantly, without vying for precedence.',
+    website: 'https://www.licodeao.top',
+    avatar: '/img/friend/licodeao.png',
   },
 ]
 
