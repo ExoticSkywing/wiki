@@ -2,7 +2,7 @@ import { type Variants, motion } from 'framer-motion'
 
 import Translate from '@docusaurus/Translate'
 
-import HeroSvg from './img/hero.svg'
+import HeroSvg from './img/support.svg'
 
 import SocialLinks from '@site/src/components/SocialLinks'
 import styles from './styles.module.css'
@@ -48,7 +48,7 @@ function Name() {
           e.currentTarget.style.setProperty('--mouse-y', `${bounding.y}px`)
         }}
       >
-        <Translate id="homepage.hero.name">愧怍</Translate>
+        <Translate id="homepage.hero.name">Nebuluxe</Translate>
       </span>
       <span className="ml-1">👋</span>
     </motion.div>

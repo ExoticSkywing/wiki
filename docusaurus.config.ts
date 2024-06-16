@@ -8,7 +8,7 @@ const beian = 'Nebuluxe·'
 const beian1 = '银河wiki'
 
 const config: Config = {
-  title: '愧怍',
+  title: '浪漫宇宙',
   url: 'https://kuizuo.cn',
   baseUrl: '/',
   favicon: 'img/favicon.ico',
@@ -17,7 +17,7 @@ const config: Config = {
   customFields: {
     bio: '道阻且长，行则将至',
     description:
-      '是一个由愧怍创建的个人博客，主要分享编程开发知识和项目，该网站基于 React 驱动的静态网站生成器 Docusaurus 构建。',
+      '是一个由Nebuluxe创建的个人博客，主要分享编程开发知识和项目，该网站基于 React 驱动的静态网站生成器 Docusaurus 构建。',
   },
   themeConfig: {
     // announcementBar: {
@@ -28,7 +28,7 @@ const config: Config = {
     metadata: [
       {
         name: 'author',
-        content: '愧怍',
+        content: 'Nebuluxe',
       },
       {
         name: 'keywords',
@@ -46,7 +46,7 @@ const config: Config = {
     },
     navbar: {
       logo: {
-        alt: '愧怍',
+        alt: 'Nebuluxe',
         src: 'img/logo.webp',
         srcDark: 'img/logo.webp',
       },
@@ -132,7 +132,7 @@ const config: Config = {
         <p style="display: inline-flex; align-items: center;"><img style="height:20px;margin-right: 0.5rem;" src="/img/police.png" alt="police" height="20"/><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=${
           beian1.match(/\d+/)?.[0]
         }" >${beian1}</a></p>
-        <p>Copyright © 2020 - PRESENT 愧怍 Built with Docusaurus.</p>
+        <p>Copyright © 2020 - PRESENT Nebuluxe Built with Docusaurus.</p>
         `,
     },
     algolia: {
@@ -257,8 +257,8 @@ const config: Config = {
           defaultReadingTime({ content, options: { wordsPerMinute: 300 } }),
         feedOptions: {
           type: 'all',
-          title: '愧怍',
-          copyright: `Copyright © ${new Date().getFullYear()} 愧怍 Built with Docusaurus.<p><a href="http://beian.miit.gov.cn/" class="footer_lin">${beian}</a></p>`,
+          title: 'Nebuluxe',
+          copyright: `Copyright © ${new Date().getFullYear()} Nebuluxe Built with Docusaurus.<p><a href="http://beian.miit.gov.cn/" class="footer_lin">${beian}</a></p>`,
         },
       },
     ],
@@ -279,7 +279,7 @@ const config: Config = {
       tagName: 'meta',
       attributes: {
         name: 'description',
-        content: '愧怍的个人博客',
+        content: 'Nebuluxe的个人博客',
       },
     },
   ],
